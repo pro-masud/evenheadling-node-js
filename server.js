@@ -27,7 +27,15 @@ app.get("/shop", (req, res) => {
 
 app.get('/team', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/team-1.html'));
-})
+});
+
+app.get('/form', (req, res) => {
+   res.sendFile(path.join(__dirname, 'public/form.html'));
+});
+
+app.post('/form', (req, res) => {
+    console.log('form requires');
+});
 app.listen(PORT, () => {
   console.log(`Server Is Running Port Number ${PORT}`.bgGreen.black);
 });
