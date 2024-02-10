@@ -1,8 +1,8 @@
 // create a node js server
-const express = require("express");
-const colors = require("colors");
-const dotenv = require("dotenv").config();
-const path = require("path");
+import express from ("express");
+import colors from ("colors");
+import dotenv from ("dotenv").config();
+import path from ("path");
 
 const PORT = process.env.PORT || 6061;
 
@@ -15,7 +15,6 @@ app.use(express.static("public"));
 // express middleware
  app.use(express.json());
  app.use(express.urlencoded({ extended: false}));
-
 
 // create express js file path
 app.get("/", (req, res) => {
