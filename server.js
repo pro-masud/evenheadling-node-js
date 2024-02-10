@@ -12,6 +12,11 @@ const app = express();
 // file and folder public status
 app.use(express.static("public"));
 
+// express middleware
+ app.use(express.json());
+ app.use(express.urlencoded({ extended: false}));
+
+
 // create express js file path
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public/index.html"));
@@ -34,7 +39,7 @@ app.get('/form', (req, res) => {
 });
 
 app.post('/form', (req, res) => {
-    console.log('form requires');
+    console.log(req.body);
 });
 app.listen(PORT, () => {
   console.log(`Server Is Running Port Number ${PORT}`.bgGreen.black);
