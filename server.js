@@ -1,8 +1,13 @@
 // create a node js server
-import express from ("express");
-import colors from ("colors");
-import dotenv from ("dotenv").config();
-import path from ("path");
+import express from "express";
+import colors from "colors";
+import dotenv from "dotenv";
+import path from "path";
+import { mainControls } from "./controllers/main.js";
+import { aboutControllers } from "./controllers/about.js";
+
+// dotenv intilation
+dotenv.config();
 
 const PORT = process.env.PORT || 6061;
 
@@ -13,33 +18,12 @@ const app = express();
 app.use(express.static("public"));
 
 // express middleware
- app.use(express.json());
- app.use(express.urlencoded({ extended: false}));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-// create express js file path
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public/index.html"));
-});
+app.get("/", mainControls);
+app.get("/about", aboutControllers)
 
-app.get("/about", (req, res) => {
-  res.sendFile(path.join(__dirname, "public/about.html"));
-});
-
-app.get("/shop", (req, res) => {
-  res.sendFile(path.join(__dirname, "public/shop.html"));
-});
-
-app.get('/team', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/team-1.html'));
-});
-
-app.get('/form', (req, res) => {
-   res.sendFile(path.join(__dirname, 'public/form.html'));
-});
-
-app.post('/form', (req, res) => {
-    console.log(req.body);
-});
 app.listen(PORT, () => {
   console.log(`Server Is Running Port Number ${PORT}`.bgGreen.black);
 });
