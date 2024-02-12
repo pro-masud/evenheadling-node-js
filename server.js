@@ -3,8 +3,8 @@ import express from "express";
 import colors from "colors";
 import dotenv from "dotenv";
 import path from "path";
-import mainController from "./router/mainfunction.js";
-import { aboutController } from "./controllers/aboutControllers.js";
+import user from "./router/user.js";
+
 
 // dotenv intilation
 dotenv.config();
@@ -21,9 +21,8 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// all rounter mvc model here now
-app.use(mainController);
-app.use(aboutController);
+// router all
+app.use(user);
 
 app.listen(PORT, () => {
   console.log(`Server Is Running Port Number ${PORT}`.bgGreen.black);
