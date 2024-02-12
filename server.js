@@ -4,6 +4,7 @@ import colors from "colors";
 import dotenv from "dotenv";
 import path from "path";
 import user from "./router/user.js";
+import register from "./router/register.js";
 
 
 // dotenv intilation
@@ -22,7 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // router all
-app.use(user);
+app.use(register);
 
 app.listen(PORT, () => {
   console.log(`Server Is Running Port Number ${PORT}`.bgGreen.black);
